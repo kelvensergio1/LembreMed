@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro de Remédio</title>
+ <style>
+body{
+    color: #ffff;
+    margin: 0;
+    font-size: 24px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+header{
+    margin: 0;
+    height: 100px;
+    padding-left: 30px;
+    display: flex;
+    background-color: #0004E8;
+}
+.titulo{
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-right: 17%;
+}
+a{
+    color: #ffff;
+    margin-top: 47px;
+    margin-right: 40px;
+    text-decoration: none;
+
+}
+button{
+    font-size: 24px;
+    color: #ffff;
+    margin-top: -10px;
+    padding: 7px;
+    width: 120px;
+    background-color: #023E8B;
+    border-radius: 7px;
+    transform: scale(1.1);
+}
+body {
+    font-family:Arial, sans-serif;
+    background-color: #f7f7f7;
+    }
+form {
+    margin-left: 35%;
+      color: black;
+      background: #ffffff;
+      padding: 15px;
+      max-width: 600px;
+      margin: 600;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    label, input, textarea {
+      display: block;
+      width: 90%;
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    input, textarea {
+      padding: 9px;
+      border: 1px solid #bbbaba;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      font-size: 24px;
+      padding: 20px;
+      background: #28a745;
+      color: rgb(255, 255, 255);
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: #218838;
+    }
+    </style>
+
+</head>
+<body>
+    <div>
+    <header>
+      <a href="inicio.html" class = titulo>LembreMed</a>
+            <a href="CadastroID.html">Cadastrar Idoso</a>
+                 <a href="CadastroRM.html">Cadastrar Remédio</a>
+                     <a href="ajuda.html">Ajuda</a>
+                        <a href="login.html"><button>Login</button></a>
+    </header>
+    <h1 style="color: black; margin-left: 40%;">Cadastrar Remedios</h1>
+     <form action="/enviar" method="post">
+            <label for="nome">Nome do Remedio:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="dose">Dose:</label>
+            <input type="text" id="dose" name="dose" required>
+
+            <label for="horario">Horários:</label>
+            <input type="text" id="horarios" name="horario" required>
+
+            <label for="dias da semana">Dias da Semana:</label>
+            <input type="text" id="dias da semana" name="dias da semana">
+
+            <label for="observações"> Observações</label>
+            <textarea id="observações" name="observações" rows="4"></textarea>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
