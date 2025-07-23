@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LembreMEd - Ajuda</title>
+
+    <style>
+        .flash-messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.flash {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: white;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+    animation-fill-mode: forwards;
+}
+
+.flash.success {
+    background-color: var(--verde-sucesso);
+}
+
+.flash.error {
+    background-color: #dc3545;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+        :root {
+            --azul-principal: #090a4b;
+            --azul-claro: #c1bdfa;
+            --branco: #f0f2f5;
+            --cinza-texto: #333;
+            --verde-sucesso: #28a745;
+            --verde-sucesso-hover: #218838;
+            --borda-input: #bbbaba;
+            --sombra-leve: rgba(0, 0, 0, 0.1);
+            --sombra-header: rgba(0, 0, 0, 0.2);
+            --sombra-logo: rgba(0, 0, 0, 0.144);
+        }
+        body {
+            color: var(--cinza-texto);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--branco);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            height: 100px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--azul-principal);
+            box-shadow: 0 2px 5px var(--sombra-header);
+            flex-shrink: 0;
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--branco);
+            margin: 0;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px var(--sombra-logo);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 40px;
+            padding: 10px 0;
+            transition: color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            color: var(--azul-claro);
+        }
+        .login-button {
+            font-size: 20px;
+            color: var(--azul-principal);
+            padding: 10px 20px;
+            background-color: #9fa4e9;
+            text-shadow: 2px 2px 4px rgba(22, 6, 80, 0.24);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+            margin-left: 40px;
+        }
+        .login-button:hover {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            transform: translateY(-2px);
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1.page-title {
+            color: var(--cinza-texto);
+            margin-bottom: 30px;
+            font-size: 40px;
+        }
+        .help-section {
+            background: #ffffff;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--sombra-leve);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .help-section h2 {
+            color: var(--azul-principal);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--azul-claro);
+            padding-bottom: 10px;
+        }
+        .help-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--cinza-texto);
+        }
+        .help-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .help-section li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--cinza-texto);
+        }
+        .help-section li::before {
+            content: '•';
+            color: var(--azul-principal);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 20px;
+            }
+            .logo {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav a, .login-button {
+                margin: 5px 15px;
+                font-size: 18px;
+            }
+            main {
+                padding: 20px 10px;
+            }
+            h1.page-title {
+                font-size: 34px;
+                margin-bottom: 20px;
+            }
+            .help-section {
+                padding: 20px;
+                max-width: 95%;
+            }
+            .help-section h2 {
+                font-size: 24px;
+            }
+            .help-section p, .help-section li {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+            }
+            .logo {
+                font-size: 36px;
+            }
+            nav a, .login-button {
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+            h1.page-title {
+                font-size: 28px;
+            }
+            .help-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <a href="inicio.html" class="logo">LembreMed</a>
+       <nav>
+    <a href="cadastro_idoso.html">Cadastrar Idoso</a>
+    <a href="cadastro_remedio.html">Cadastrar Remédio</a>
+    <a href="ajuda.html">Ajuda</a>
+    <a href="login.html" class="login-button">Login</a>
+</nav>
+    </header>
+    <main>
+        <h1 class="page-title">Página de Ajuda</h1>
+
+        <div class="help-section">
+            <h2>Como usar o LembreMed?</h2>
+            <p>
+                O LembreMed é uma ferramenta desenvolvida para auxiliar você no gerenciamento e lembretes de medicamentos para idosos. Siga os passos abaixo para começar:
+            </p>
+            <ul>
+                <li>Cadastrar Idoso: Primeiramente, registre os dados do idoso para quem os remédios serão cadastrados. Isso inclui nome, idade, e informações de contato do cuidador/familiar.</li>
+                <li>Cadastrar Remédio: Após o cadastro do idoso, adicione os medicamentos, suas doses e horários específicos de administração. Você pode incluir observações importantes.</li>
+                <li>Visualizar Lembretes: Você pode visualizar e gerenciar os lembretes de cada remédio cadastrado, garantindo que nenhum horário seja esquecido.</li>
+                <li>Suporte: Em caso de dúvidas ou problemas, consulte a seção de perguntas frequentes ou entre em contato com nosso suporte.</li>
+            </ul>
+        </div>
+
+        <div class="help-section">
+            <h2>Perguntas Frequentes (FAQ)</h2>
+            <p>
+                P: Posso cadastrar mais de um idoso?<br>
+                R: Sim, você pode cadastrar múltiplos idosos e gerenciar os medicamentos de cada um separadamente.
+            </p>
+            <p>
+                P: Receberei notificações dos lembretes?<br>
+                R: As notificações estão sendo implementadas e serão disponibilizadas em breve para garantir que você receba os alertas dos medicamentos.
+            </p>
+        </div>
+    </main>
+</body>
+</html>
