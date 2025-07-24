@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LembreMEd - Cadastro de Remédio</title>
+
+    <style>
+        :root {
+            --azul-principal: #090a4b;
+            --azul-claro: #c1bdfa;
+            --branco: #f0f2f5;
+            --cinza-texto: #333;
+            --verde-sucesso: #28a745;
+            --verde-sucesso-hover: #218838;
+            --borda-input: #bbbaba;
+            --sombra-leve: rgba(0, 0, 0, 0.1);
+            --sombra-header: rgba(0, 0, 0, 0.2);
+            --sombra-logo: rgba(0, 0, 0, 0.144);
+        }
+
+        body {
+            color: var(--branco);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--branco);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            height: 100px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--azul-principal);
+            box-shadow: 0 2px 5px var(--sombra-header);
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--branco);
+            margin: 0;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px var(--sombra-logo);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 40px;
+            padding: 10px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: var(--azul-claro);
+        }
+
+        .login-button {
+            font-size: 20px;
+            color: var(--azul-principal);
+            padding: 10px 20px;
+            background-color: #9fa4e9;
+            text-shadow: 2px 2px 4px rgba(22, 6, 80, 0.24);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+            margin-left: 40px;
+        }
+
+        .login-button:hover {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            transform: translateY(-2px);
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1.form-title {
+            color: var(--cinza-texto);
+            margin-bottom: 20px;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        form {
+            color: var(--cinza-texto);
+            background: #ffffff;
+            padding: 30px;
+            max-width: 550px;
+            width: 100%;
+            min-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--sombra-leve);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--cinza-texto);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="time"],
+        input[type="date"],
+        textarea,
+        select { /* Adicionado select aqui */
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--borda-input);
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus { /* Adicionado select aqui */
+            border-color: var(--azul-principal);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 4, 232, 0.2);
+        }
+
+        input[type="submit"] {
+            font-size: 22px;
+            color: var(--branco);
+            padding: 15px 30px;
+            width: 100%;
+            background: var(--verde-sucesso);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s ease-in-out, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: var(--verde-sucesso-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a,
+            .login-button {
+                margin: 5px 15px;
+                font-size: 18px;
+            }
+
+            h1.form-title {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+
+            form {
+                padding: 25px;
+                max-width: 90%;
+            }
+
+            input,
+            textarea,
+            select { /* Adicionado select aqui */
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            nav a,
+            .login-button {
+                margin: 5px 10px;
+                font-size: 16px;
+            }
+
+            h1.form-title {
+                font-size: 26px;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+        .flash-messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.flash {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: white;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+    animation-fill-mode: forwards;
+}
+
+.flash.success {
+    background-color: var(--verde-sucesso);
+}
+
+.flash.error {
+    background-color: #dc3545;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="inicio.html" class="logo">LembreMed</a>
+        <nav>
+            <a href="cadastro_idoso.html">Cadastrar Idoso</a>
+            <a href="cadastro_remedio.html">Cadastrar Remédio</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="login.html" class="login-button">Login</a>
+        </nav>
+    </header>
+    <main>
+        <h1 class="form-title">Cadastrar Remédios</h1>
+        <form action="/cadastro-remedio" method="post">
+
+            <!-- CORREÇÃO: Adicionado campo para selecionar o idoso -->
+            <label for="id_id">Associar ao Idoso:</label>
+            <select id="id_id" name="id_id" required>
+                {% for idoso in idosos %}
+                    <option value="{{ idoso.id }}">{{ idoso.nome }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="nome_comercial">Nome do Remédio:</label>
+            <input type="text" id="nome_comercial" name="nome_comercial" required>
+
+            <label for="principio_ativo">Princípio Ativo:</label>
+            <input type="text" id="principio_ativo" name="principio_ativo" required>
+
+            <label for="dosagem">Dosagem:</label>
+            <input type="text" id="dosagem" name="dosagem">
+
+            <label for="forma_farmaceutica">Forma Farmacêutica:</label>
+            <input type="text" id="forma_farmaceutica" name="forma_farmaceutica" required>
+
+            <label for="horario">Horários:</label>
+            <input type="time" id="horario" name="horario" required>
+
+            <label for="dias">Dias da Semana:</label>
+            <input type="text" id="dias" name="dias" placeholder="Ex: Segunda, Quarta, Sexta ou Todos os dias">
+
+            <label for="descricao">Observações:</label>
+            <textarea id="descricao" name="descricao"></textarea>
+
+            <input type="submit" value="Salvar Remédio">
+        </form>
+    </main>
+    <!-- CORREÇÃO: Adicionado script para remover flash messages -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash');
+            flashMessages.forEach(function(msg) {
+                msg.addEventListener('animationend', function(event) {
+                    if (event.animationName === 'fadeOut') {
+                        msg.remove();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
