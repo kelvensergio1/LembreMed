@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LembreMed</title>
+
+    <style>
+        .flash-messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.flash {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: white;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+    animation-fill-mode: forwards;
+}
+
+.flash.success {
+    background-color: var(--verde-sucesso);
+}
+
+.flash.error {
+    background-color: #dc3545;
+}
+
+.flash.warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+   :root {
+    --azul-principal: #ffffff;
+    --azul-claro: #bde2fa;
+    --branco: #1a3358;
+    /* CORREÇÃO: Adicionadas as variáveis ausentes */
+    --azul_escuro: #090a4b; /* Valor exemplo, ajuste se necessário */
+   }
+        body {
+            color: var(--branco);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--branco);
+        }
+
+        header {
+            height: 100px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--azul_escuro);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--azul-principal);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.144);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--azul-principal);
+            font-size: 20px;
+            margin-left: 40px;
+            padding: 10px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: var(--azul_claro);
+        }
+
+        .login-button {
+            font-size: 20px;
+            color: var(--azul_escuro);
+            padding: 10px 20px;
+            background-color: #9fa4e9;
+            text-shadow: 2px 2px 4px rgba(22, 6, 80, 0.24);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+            margin-left: 40px;
+        }
+
+        .login-button:hover {
+            background-color: var(--azul_escuro);
+            transform: translateY(-2px);
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1 class="logo">LembreMed</h1>
+ <nav>
+    <a href="cadastro_idoso.html">Cadastrar Idoso</a>
+    <a href="cadastro_remedio.html">Cadastrar Remédio</a>
+    <a href="ajuda.html">Ajuda</a>
+    <a href="login.html" class="login-button">Login</a>
+</nav>
+    </header>
+
+    <main style="padding: 40px; text-align: center; color: #ffffff;">
+        <h2 style="font-size: 36px; margin-bottom: 20px;">Bem-vindo ao LembreMed!</h2>
+        <p style="font-size: 20px; line-height: 1.6;">
+            Sua solução completa para gerenciar e lembrar os medicamentos dos seus entes queridos.
+            Organize horários, personalize lembretes e garanta a saúde de quem você ama com facilidade e segurança.
+        </p>
+        <p style="font-size: 18px; margin-top: 30px;">
+            Comece cadastrando um idoso ou um novo medicamento para iniciar.
+        </p>
+    </main>
+    <!-- CORREÇÃO: Adicionado script para remover flash messages -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash');
+            flashMessages.forEach(function(msg) {
+                msg.addEventListener('animationend', function(event) {
+                    if (event.animationName === 'fadeOut') {
+                        msg.remove();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LembreMEd - Cadastro de Idoso</title>
+    <style>
+        :root {
+            --azul-principal: #090a4b;
+            --azul-claro: #c1bdfa;
+            --branco: #f0f2f5;
+            --cinza-texto: #333;
+            --verde-sucesso: #28a745;
+            --verde-sucesso-hover: #218838;
+            --borda-input: #bbbaba;
+            --sombra-leve: rgba(0, 0, 0, 0.1);
+            --sombra-header: rgba(0, 0, 0, 0.2);
+            --sombra-logo: rgba(0, 0, 0, 0.144);
+        }
+
+        body {
+            color: var(--branco);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--branco);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ... (mantenha o restante do CSS original) ... */
+    </style>
+</head>
+<body>
+    <header>
+        <a href="inicio.html" class="logo">LembreMed</a>
+        <nav>
+            <a href="cadastro_idoso.html">Cadastrar Idoso</a>
+            <a href="cadastro_remedio.html">Cadastrar Remédio</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="login.html" class="login-button">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="form-title">Cadastro Idoso</h1>
+        <form id="cadastroIdosoForm" action="/cadastro-idoso" method="post">
+            <label for="nome">Nome do Paciente:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" min="0" required>
+
+            <label for="sexo">Sexo do Paciente:</label>
+            <input type="text" id="sexo" name="sexo" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" pattern="[0-9]{11}" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="doencas">Doenças (se houver):</label>
+            <textarea id="doencas" name="doencas" rows="4"></textarea>
+
+            <button type="submit" id="submitButton">Salvar Cadastro</button>
+        </form>
+    </main>
+
+    <!-- Script para remover mensagens flash -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash');
+            flashMessages.forEach(function(msg) {
+                msg.addEventListener('animationend', function(event) {
+                    if (event.animationName === 'fadeOut') {
+                        msg.remove();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Script ÚNICO para enviar o formulário (ajustado para FormData) -->
+    <script>
+        document.getElementById('cadastroIdosoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitButton');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            try {
+                const formData = new FormData(this); // Captura todos os campos do formulário
+
+                const response = await fetch('/cadastro-idoso', {
+                    method: 'POST',
+                    body: formData // Envia como FormData (sem headers JSON)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    alert(result.message || 'Cadastro realizado com sucesso!');
+                    this.reset();
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Erro no servidor');
+                }
+            } catch (error) {
+                alert('Erro: ' + error.message);
+                console.error('Detalhes do erro:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Salvar Cadastro';
+            }
+        });
+    </script>
+</body>
+</html>
